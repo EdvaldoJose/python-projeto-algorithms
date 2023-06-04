@@ -9,4 +9,3 @@ def study_schedule(permanence_period, target_time):
         if int(x[0]) <= target_time <= int(x[1]):
             result += 1
     return result
-# fim
