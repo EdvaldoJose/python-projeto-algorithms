@@ -3,15 +3,16 @@ import pytest
 
 
 def test_encrypt_message():
+    # testando os tipos incorretos para key e message
     with pytest.raises(TypeError):
-        encrypt_message('edvaldo', 'edvaldo') == 'tipo invalido para key'
-        encrypt_message(1223, 'img') == 'tipo invalido para message'
+        encrypt_message("edvaldo", "edvaldo") == "tipo inválido para key"
+        encrypt_message(1223, "img") == "tipo inválido para message"
 
+    # testando com key ímpar
+    assert encrypt_message("edvaldo", 3) == "vde_odla"
 
-assert encrypt_message('edvaldo', 3) == 'vde_aldo'
-#  testando com a key impar
+    # testando com key par
+    assert encrypt_message("abcdefghi", 4) == "ihgfe_dcba"
 
-assert encrypt_message('abcdefghi', 4) == 'ihgfe_dcba'
-# testando com a key par
-
-assert encrypt_message('abcdefghi', 100) == 'ihgfedcba'
+    # testando com Key maior que mensagem
+    assert encrypt_message("abcdefghi", 90) == "ihgfedcba"
